@@ -3,10 +3,17 @@ function getRandomHexColor() {
 }
 
 const createDiv = document.querySelector("[data-create]");
+const input = document.querySelector("input");
 const reset = document.querySelector("[data-destroy]");
 const bxs = document.querySelector("#boxes");
 createDiv.addEventListener("click", addDivs);
 reset.addEventListener("click", resetPage);
+input.addEventListener("keypress", (evt) => {
+  if (evt.key === "Enter") {
+    evt.preventDefault();
+    createDiv.click();
+  }
+});
 function addDivs() {
   const numberOfDivs = Number(document.querySelector("input").value);
   let singleDiv = document.createDocumentFragment();
